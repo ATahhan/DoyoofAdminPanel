@@ -40,7 +40,7 @@ class DashboardViewController: DemoBaseViewController {
         return volunteers.filter({$0.status == "busy"})
     }
     var unavailableVol: [Volunteer] {
-        return volunteers.filter({$0.status == "unavailable"})
+        return volunteers.filter({$0.status == "notavailable"})
     }
     private var chartDataset: [[Volunteer]]!
     var animations: [StockAnimation] = [.slide(.up, .moderately), .fadeIn]
@@ -234,7 +234,13 @@ class DashboardViewController: DemoBaseViewController {
     }
     
     func updateSectorInfo(_ volunteers: [Volunteer]) {
+        medicsLabel.text = String(volunteers.filter({$0.category == "1"}).count)
+        giudanceLabel.text = String(volunteers.filter({$0.category == "2"}).count)
+        translationLabel.text = String(volunteers.filter({$0.category == "3"}).count)
         
+        if let bool = medicsLabel.superview?.superview?.superview?.isHidden, bool {
+            medicsLabel.superview?.superview?.superview?.isHidden = false
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
