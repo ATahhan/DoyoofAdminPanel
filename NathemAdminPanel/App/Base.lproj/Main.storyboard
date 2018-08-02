@@ -136,10 +136,10 @@
                                 <rect key="frame" x="210" y="0.0" width="814" height="1000"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mc6-LE-AyE" userLabel="Container View">
-                                        <rect key="frame" x="0.0" y="0.0" width="814" height="1005"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="814" height="731"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="F6i-ER-rKh">
-                                                <rect key="frame" x="32" y="54" width="750" height="897"/>
+                                                <rect key="frame" x="32" y="54" width="750" height="623"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="d0y-oB-5cH">
                                                         <rect key="frame" x="0.0" y="0.0" width="750" height="200"/>
@@ -262,8 +262,8 @@
                                                             <constraint firstAttribute="height" constant="350" id="nPe-Aa-k9T"/>
                                                         </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="56P-RP-y7M">
-                                                        <rect key="frame" x="0.0" y="647" width="750" height="250"/>
+                                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="56P-RP-y7M">
+                                                        <rect key="frame" x="0.0" y="623" width="750" height="250"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OgG-OD-VtJ">
                                                                 <rect key="frame" x="0.0" y="0.0" width="242" height="250"/>
