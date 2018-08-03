@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DropDownDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    func tableView(didSelectRowAt indexPath: IndexPath)
 }
 
 class DropDownTableViewController: UITableViewController {
@@ -50,7 +50,7 @@ class DropDownTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate.tableView(tableView, didSelectRowAt: indexPath)
+        delegate.tableView(didSelectRowAt: indexPath)
         dismiss(animated: true, completion: nil)
     }
 

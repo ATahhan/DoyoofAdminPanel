@@ -386,7 +386,7 @@
                                                                         <rect key="frame" x="312" y="0.0" width="438" height="200"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wrf-vh-ucN" customClass="PieChartView" customModule="Charts">
-                                                                                <rect key="frame" x="12" y="0.0" width="394" height="200"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="438" height="200"/>
                                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             </view>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VsH-9i-iV8">
@@ -403,8 +403,8 @@
                                                                             <constraint firstItem="VsH-9i-iV8" firstAttribute="top" secondItem="JDW-o6-jXP" secondAttribute="top" id="NNJ-6X-ru8"/>
                                                                             <constraint firstItem="VsH-9i-iV8" firstAttribute="leading" secondItem="JDW-o6-jXP" secondAttribute="leading" id="OoM-lb-z08"/>
                                                                             <constraint firstAttribute="bottom" secondItem="Wrf-vh-ucN" secondAttribute="bottom" id="RBM-CJ-Tdm"/>
-                                                                            <constraint firstAttribute="trailing" secondItem="Wrf-vh-ucN" secondAttribute="trailing" constant="32" id="YFg-FL-7cz"/>
-                                                                            <constraint firstItem="Wrf-vh-ucN" firstAttribute="leading" secondItem="JDW-o6-jXP" secondAttribute="leading" constant="12" id="m5f-ak-cMZ"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="Wrf-vh-ucN" secondAttribute="trailing" id="YFg-FL-7cz"/>
+                                                                            <constraint firstItem="Wrf-vh-ucN" firstAttribute="leading" secondItem="JDW-o6-jXP" secondAttribute="leading" id="m5f-ak-cMZ"/>
                                                                             <constraint firstItem="Wrf-vh-ucN" firstAttribute="top" secondItem="JDW-o6-jXP" secondAttribute="top" id="m6y-50-ct5"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
@@ -856,8 +856,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="200" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Muna" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyw-j4-lHa">
-                                                    <rect key="frame" x="79" y="12" width="43" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mina" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dyw-j4-lHa">
+                                                    <rect key="frame" x="81.5" y="12" width="37" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

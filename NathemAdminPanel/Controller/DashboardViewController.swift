@@ -133,9 +133,6 @@ class DashboardViewController: DemoBaseViewController {
         medicsLabel.superview?.superview?.superview?.superview?.isHidden = true
         backViews.forEach({$0.isHidden = true})
         
-        _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { (_) in
-            self.refreshSectors()
-        })
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -170,6 +167,7 @@ class DashboardViewController: DemoBaseViewController {
     
     func updateMap() {
         map.clear()
+        fillVolunteersMarkers()
         // Creates a marker in the center of the map.
         for sector in sectors {
             let marker = CustomMarker(position: CLLocationCoordinate2D(latitude: sector.lat, longitude: sector.long), radius: sector.radius)
@@ -183,11 +181,21 @@ class DashboardViewController: DemoBaseViewController {
     }
     
     func fillVolunteersMarkers() {
-        for i in 20..<29 {
-//            let sector = volunteers[i]
-            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: 21.354652 + (Double(i)/100), longitude: 39.982282 + (Double(i)/100)))
-            marker.iconView = UIImageView(image: #imageLiteral(resourceName: "map"))
+        let positions: [CLLocationCoordinate2D] = [
+            CLLocationCoordinate2D(latitude: 21.346616, longitude: 39.975816),
+            CLLocationCoordinate2D(latitude: 21.354610, longitude: 39.982654),
+            CLLocationCoordinate2D(latitude: 21.352098, longitude: 39.966100),
+            CLLocationCoordinate2D(latitude: 21.372452, longitude: 39.983384),
+            CLLocationCoordinate2D(latitude: 21.336953, longitude: 39.971893)
+        ]
+        let names: [String] = ["map", "map_red", "map_orange"]
+        for i in 0..<5 {
+            let marker = GMSMarker(position: positions[i%positions.count])
+            let image = UIImageView(image: UIImage(named: names[i%names.count])?.resized(to: CGSize(width: 25, height: 28)))
+            image.contentMode = .scaleAspectFit
+            marker.iconView = image
             marker.map = map
+            marker.isTappable = false
         }
     }
     
@@ -233,6 +241,8 @@ class DashboardViewController: DemoBaseViewController {
             + ChartColorTemplates.pastel()
             + [UIColor(red: 51/255, green: 181/255, blue: 229/255, alpha: 1)]
         
+        set.colors = [UIColor.green, UIColor.orange, UIColor.lightGray]
+        
         let data = PieChartData(dataSet: set)
         
         let pFormatter = NumberFormatter()
@@ -242,7 +252,7 @@ class DashboardViewController: DemoBaseViewController {
         pFormatter.percentSymbol = " %"
         data.setValueFormatter(DefaultValueFormatter(formatter: pFormatter))
         
-        data.setValueFont(.systemFont(ofSize: 11, weight: .light))
+        data.setValueFont(.systemFont(ofSize: 9, weight: .light))
         data.setValueTextColor(.white)
         
         chartView.data = data
@@ -315,7 +325,7 @@ class DashboardViewController: DemoBaseViewController {
 }
 
 extension DashboardViewController: DropDownDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(didSelectRowAt indexPath: IndexPath) {
         var location: CLLocationCoordinate2D!
         var zoom: Float!
         switch indexPath.row {
