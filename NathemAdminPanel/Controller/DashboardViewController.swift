@@ -178,16 +178,16 @@ class DashboardViewController: DemoBaseViewController {
             marker.map = map
             marker.isTappable = true
             marker.volunteers = sector.volunteers
+            
         }
     }
     
     func fillVolunteersMarkers() {
         for i in 20..<29 {
 //            let sector = volunteers[i]
-            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: 21.354652 + Double(i), longitude: 39.982282 + Double(i)))
-            marker.icon = #imageLiteral(resourceName: "map")
+            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: 21.354652 + (Double(i)/100), longitude: 39.982282 + (Double(i)/100)))
+            marker.iconView = UIImageView(image: #imageLiteral(resourceName: "map"))
             marker.map = map
-            marker.isTappable = false
         }
     }
     
