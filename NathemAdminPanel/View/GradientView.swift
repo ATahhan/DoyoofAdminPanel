@@ -12,13 +12,13 @@ import UIKit
     
     private var gradientLayer: CAGradientLayer!
     
-    @IBInspectable var topColor: UIColor = .red {
+    @IBInspectable var topColor: UIColor = .clear {
         didSet {
             setNeedsLayout()
         }
     }
     
-    @IBInspectable var bottomColor: UIColor = .yellow {
+    @IBInspectable var bottomColor: UIColor = .clear {
         didSet {
             setNeedsLayout()
         }

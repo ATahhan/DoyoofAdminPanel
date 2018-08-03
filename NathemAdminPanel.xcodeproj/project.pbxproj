@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		8E72284005387215E1831A28 /* Pods_NathemAdminPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 716977A03D92CA26E739ECB6 /* Pods_NathemAdminPanel.framework */; };
+		D60C8D19211386A700273EB4 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60C8D18211386A700273EB4 /* GradientView.swift */; };
+		D60C8D1B2113CB7B00273EB4 /* DropDownTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60C8D1A2113CB7B00273EB4 /* DropDownTableViewController.swift */; };
 		D61EF0242112953E00176B8B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61EF0232112953E00176B8B /* API.swift */; };
 		D61EF0262112954A00176B8B /* Volunteer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D61EF0252112954A00176B8B /* Volunteer.swift */; };
 		D622EEDC2112836E0036AEFB /* DemoBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D622EEDB2112836E0036AEFB /* DemoBaseViewController.swift */; };
-		D6A2C98721125747002CD475 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2C98621125747002CD475 /* ViewController.swift */; };
+		D64BFD3D2113556700A34F27 /* Sector.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BFD3C2113556700A34F27 /* Sector.swift */; };
+		D64BFD432113747E00A34F27 /* CustomizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BFD3E2113747C00A34F27 /* CustomizableButton.swift */; };
+		D64BFD442113747E00A34F27 /* CustomizableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BFD3F2113747D00A34F27 /* CustomizableImageView.swift */; };
+		D64BFD452113747E00A34F27 /* CustomizableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BFD402113747D00A34F27 /* CustomizableLabel.swift */; };
+		D64BFD462113747E00A34F27 /* CustomizableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BFD412113747D00A34F27 /* CustomizableTextField.swift */; };
+		D64BFD472113747E00A34F27 /* CustomizableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BFD422113747E00A34F27 /* CustomizableView.swift */; };
 		D6A2C9892112578F002CD475 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2C9882112578F002CD475 /* Location.swift */; };
-		D6A2C98B211257AD002CD475 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2C98A211257AD002CD475 /* Bus.swift */; };
-		D6A2C98D211257C2002CD475 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2C98C211257C2002CD475 /* Station.swift */; };
 		D6A2C98F21125806002CD475 /* CustomMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6A2C98E21125806002CD475 /* CustomMarker.swift */; };
 		D6B0794021123D590076D5BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0793F21123D590076D5BF /* AppDelegate.swift */; };
 		D6B0794221123D590076D5BF /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6B0794121123D590076D5BF /* DashboardViewController.swift */; };
@@ -27,7 +32,6 @@
 		D6F2AE482112444C001DB151 /* RounedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2AE422112444B001DB151 /* RounedButton.swift */; };
 		D6F2AE492112444C001DB151 /* MainButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2AE432112444B001DB151 /* MainButton.swift */; };
 		D6F2AE4A2112444C001DB151 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2AE442112444B001DB151 /* Extensions.swift */; };
-		D6F2AE4B2112444C001DB151 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2AE452112444C001DB151 /* GradientView.swift */; };
 		D6F2AE4C2112444C001DB151 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6F2AE462112444C001DB151 /* Appearance.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,13 +39,18 @@
 		0BBD7A9BDAF42AA857010351 /* Pods-NathemAdminPanel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NathemAdminPanel.release.xcconfig"; path = "Pods/Target Support Files/Pods-NathemAdminPanel/Pods-NathemAdminPanel.release.xcconfig"; sourceTree = "<group>"; };
 		716977A03D92CA26E739ECB6 /* Pods_NathemAdminPanel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NathemAdminPanel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		925E838747BDE345BD492F05 /* Pods-NathemAdminPanel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NathemAdminPanel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NathemAdminPanel/Pods-NathemAdminPanel.debug.xcconfig"; sourceTree = "<group>"; };
+		D60C8D18211386A700273EB4 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		D60C8D1A2113CB7B00273EB4 /* DropDownTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownTableViewController.swift; sourceTree = "<group>"; };
 		D61EF0232112953E00176B8B /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D61EF0252112954A00176B8B /* Volunteer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volunteer.swift; sourceTree = "<group>"; };
 		D622EEDB2112836E0036AEFB /* DemoBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoBaseViewController.swift; sourceTree = "<group>"; };
-		D6A2C98621125747002CD475 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D64BFD3C2113556700A34F27 /* Sector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sector.swift; sourceTree = "<group>"; };
+		D64BFD3E2113747C00A34F27 /* CustomizableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableButton.swift; sourceTree = "<group>"; };
+		D64BFD3F2113747D00A34F27 /* CustomizableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableImageView.swift; sourceTree = "<group>"; };
+		D64BFD402113747D00A34F27 /* CustomizableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableLabel.swift; sourceTree = "<group>"; };
+		D64BFD412113747D00A34F27 /* CustomizableTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableTextField.swift; sourceTree = "<group>"; };
+		D64BFD422113747E00A34F27 /* CustomizableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomizableView.swift; sourceTree = "<group>"; };
 		D6A2C9882112578F002CD475 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		D6A2C98A211257AD002CD475 /* Bus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
-		D6A2C98C211257C2002CD475 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		D6A2C98E21125806002CD475 /* CustomMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomMarker.swift; sourceTree = "<group>"; };
 		D6B0793C21123D590076D5BF /* NathemAdminPanel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NathemAdminPanel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B0793F21123D590076D5BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +65,6 @@
 		D6F2AE422112444B001DB151 /* RounedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RounedButton.swift; sourceTree = "<group>"; };
 		D6F2AE432112444B001DB151 /* MainButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainButton.swift; sourceTree = "<group>"; };
 		D6F2AE442112444B001DB151 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		D6F2AE452112444C001DB151 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		D6F2AE462112444C001DB151 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,9 +101,8 @@
 			isa = PBXGroup;
 			children = (
 				D6A2C9882112578F002CD475 /* Location.swift */,
-				D6A2C98A211257AD002CD475 /* Bus.swift */,
-				D6A2C98C211257C2002CD475 /* Station.swift */,
 				D61EF0252112954A00176B8B /* Volunteer.swift */,
+				D64BFD3C2113556700A34F27 /* Sector.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -103,10 +110,15 @@
 		D6A2C9802112456C002CD475 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D64BFD3E2113747C00A34F27 /* CustomizableButton.swift */,
+				D64BFD3F2113747D00A34F27 /* CustomizableImageView.swift */,
+				D64BFD402113747D00A34F27 /* CustomizableLabel.swift */,
+				D64BFD412113747D00A34F27 /* CustomizableTextField.swift */,
+				D64BFD422113747E00A34F27 /* CustomizableView.swift */,
 				D6A2C98E21125806002CD475 /* CustomMarker.swift */,
 				D6F2AE3F21124321001DB151 /* SideMenuTableViewCell.swift */,
-				D6F2AE452112444C001DB151 /* GradientView.swift */,
 				D6F2AE432112444B001DB151 /* MainButton.swift */,
+				D60C8D18211386A700273EB4 /* GradientView.swift */,
 				D6F2AE422112444B001DB151 /* RounedButton.swift */,
 			);
 			path = View;
@@ -116,8 +128,8 @@
 			isa = PBXGroup;
 			children = (
 				D6B0794121123D590076D5BF /* DashboardViewController.swift */,
+				D60C8D1A2113CB7B00273EB4 /* DropDownTableViewController.swift */,
 				D622EEDB2112836E0036AEFB /* DemoBaseViewController.swift */,
-				D6A2C98621125747002CD475 /* ViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -297,8 +309,10 @@
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 				"${BUILT_PRODUCTS_DIR}/Spruce/Spruce.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UICountingLabel/UICountingLabel.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -307,8 +321,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spruce.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UICountingLabel.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -322,23 +338,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D60C8D1B2113CB7B00273EB4 /* DropDownTableViewController.swift in Sources */,
 				D622EEDC2112836E0036AEFB /* DemoBaseViewController.swift in Sources */,
-				D6A2C98721125747002CD475 /* ViewController.swift in Sources */,
+				D64BFD432113747E00A34F27 /* CustomizableButton.swift in Sources */,
+				D60C8D19211386A700273EB4 /* GradientView.swift in Sources */,
 				D6A2C9892112578F002CD475 /* Location.swift in Sources */,
 				D6F2AE4021124321001DB151 /* SideMenuTableViewCell.swift in Sources */,
 				D6F2AE4C2112444C001DB151 /* Appearance.swift in Sources */,
 				D6B0794221123D590076D5BF /* DashboardViewController.swift in Sources */,
+				D64BFD472113747E00A34F27 /* CustomizableView.swift in Sources */,
 				D61EF0262112954A00176B8B /* Volunteer.swift in Sources */,
-				D6A2C98D211257C2002CD475 /* Station.swift in Sources */,
 				D6A2C98F21125806002CD475 /* CustomMarker.swift in Sources */,
 				D6F2AE492112444C001DB151 /* MainButton.swift in Sources */,
-				D6A2C98B211257AD002CD475 /* Bus.swift in Sources */,
+				D64BFD462113747E00A34F27 /* CustomizableTextField.swift in Sources */,
 				D6F2AE472112444C001DB151 /* Formatting.swift in Sources */,
+				D64BFD452113747E00A34F27 /* CustomizableLabel.swift in Sources */,
 				D6F2AE482112444C001DB151 /* RounedButton.swift in Sources */,
 				D6B0794021123D590076D5BF /* AppDelegate.swift in Sources */,
-				D6F2AE4B2112444C001DB151 /* GradientView.swift in Sources */,
 				D61EF0242112953E00176B8B /* API.swift in Sources */,
 				D6F2AE4A2112444C001DB151 /* Extensions.swift in Sources */,
+				D64BFD3D2113556700A34F27 /* Sector.swift in Sources */,
+				D64BFD442113747E00A34F27 /* CustomizableImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -486,8 +506,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8UCDP9M4Y;
 				INFOPLIST_FILE = NathemAdminPanel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AmmarAlTahhan.NathemAdminPanel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -503,8 +526,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B8UCDP9M4Y;
 				INFOPLIST_FILE = NathemAdminPanel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.AmmarAlTahhan.NathemAdminPanel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

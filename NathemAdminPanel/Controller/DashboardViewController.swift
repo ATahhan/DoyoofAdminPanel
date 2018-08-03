@@ -8,28 +8,54 @@
 
 import UIKit
 import Charts
+import CoreLocation
 import GoogleMaps
 import GooglePlaces
 import Spruce
+import UICountingLabel
+
+enum Places {
+    case Muna
+    case Arafat
+    case Muzdalifah
+}
 
 class DashboardViewController: DemoBaseViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var map: GMSMapView!
     @IBOutlet weak var chartView: PieChartView!
     @IBOutlet weak var volunteersCountLabel: UILabel!
     @IBOutlet weak var firstStackView: UIStackView!
-    @IBOutlet weak var medicsLabel: UILabel!
-    @IBOutlet weak var giudanceLabel: UILabel!
-    @IBOutlet weak var translationLabel: UILabel!
+    @IBOutlet weak var medicsLabel: UICountingLabel!
+    @IBOutlet weak var giudanceLabel: UICountingLabel!
+    @IBOutlet weak var translationLabel: UICountingLabel!
+    @IBOutlet var backViews: [UIView]!
+    @IBOutlet weak var menuButton: UIButton!
     
-    let sideMenu: [String] = ["Main", "Secondary", "Profile", "About"]
-    var locations: [Location] = []
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    let sideMenu: [String] = ["Dashboard", "List", "Additional Services", "Settings"]
+    let icons: [UIImage] = [#imageLiteral(resourceName: "chart"), #imageLiteral(resourceName: "list"), #imageLiteral(resourceName: "menu"), #imageLiteral(resourceName: "settings")]
+    let coordinates: [Places: CLLocationCoordinate2D] = [
+        .Arafat: CLLocationCoordinate2D(latitude: 21.354605, longitude: 39.982829),
+        .Muna: CLLocationCoordinate2D(latitude: 21.413168, longitude: 39.893857),
+        .Muzdalifah: CLLocationCoordinate2D(latitude: 21.391781, longitude: 39.912127)
+    ]
+    var sectors: [Sector] = [] {
+        didSet {
+            volunteers = sectors.map({$0.volunteers}).reduce([], +)
+            updateMap()
+        }
+    }
     var volunteers: [Volunteer] = [] {
         didSet {
             chartDataset = [availableVol, busyVol, unavailableVol]
             volunteersCountLabel.text = String(volunteers.count)
             updateChartData()
+            fillVolunteersMarkers()
         }
     }
     var availableVol: [Volunteer] {
@@ -43,7 +69,7 @@ class DashboardViewController: DemoBaseViewController {
         return volunteers.filter({$0.status == "notavailable"})
     }
     private var chartDataset: [[Volunteer]]!
-    var animations: [StockAnimation] = [.slide(.up, .moderately), .fadeIn]
+    var animations: [StockAnimation] = [.slide(.up, .severely), .fadeIn]
     var sortFunction = LinearSortFunction(direction: .topToBottom, interObjectDelay: 0.3)
 
     override func viewDidLoad() {
@@ -51,8 +77,8 @@ class DashboardViewController: DemoBaseViewController {
         // Do any additional setup after loading the view, typically from a nib.
     
         map.delegate = self
-        UIApplication.shared.isStatusBarHidden = true
-        fillLocations()
+        map.alpha = 0
+        updateMap()
         loadMap()
         chartDataset = [availableVol, busyVol, unavailableVol]
         
@@ -95,18 +121,22 @@ class DashboardViewController: DemoBaseViewController {
         self.optionTapped(.spin)
         self.updateChartData()
         
-        refreshVolunteers()
+        refreshSectors()
         setupSpruce()
+        
+        medicsLabel.format = "%d"
+        giudanceLabel.format = "%d"
+        translationLabel.format = "%d"
+        medicsLabel.count(from: 0, to: 0)
+        giudanceLabel.count(from: 0, to: 0)
+        translationLabel.count(from: 0, to: 0)
+        medicsLabel.superview?.superview?.superview?.superview?.isHidden = true
+        backViews.forEach({$0.isHidden = true})
+        
+        _ = Timer.scheduledTimer(withTimeInterval: 2, repeats: true, block: { (_) in
+            self.refreshSectors()
+        })
     }
-    
-    func refreshVolunteers() {
-        API.getVolunteers { (result, err) in
-            guard err == nil else { return }
-            self.volunteers = result!
-        }
-    }
-    
-    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -115,23 +145,49 @@ class DashboardViewController: DemoBaseViewController {
         startSpruce()
     }
     
-    func fillLocations() {
-        //21.354652, 39.982782
-        locations.append(Location(lat: 21.354652, long: 39.982282, profilePic: #imageLiteral(resourceName: "red_circle")))
-        locations.append(Location(lat: 21.352612, long: 39.972282, profilePic: #imageLiteral(resourceName: "red_circle")))
-        locations.append(Location(lat: 21.351652, long: 39.989382, profilePic: #imageLiteral(resourceName: "red_circle").resized(to: CGSize(width: 100, height: 100))))
-        locations.append(Location(lat: 21.358552, long: 39.990282, profilePic: #imageLiteral(resourceName: "red_circle").resized(to: CGSize(width: 80, height: 80))))
+    func refreshSectors() {
+        API.getSectors { (sectors, err) in
+            guard err == nil else { return }
+            self.sectors = sectors!
+        }
     }
     
-    func loadMap() {
+    func loadMap(at lat: Double = 21.354652, long: Double = 39.982282, zoom: Float = 13.2) {
         // Create a GMSCameraPosition that tells the map to display the
         // coordinate -33.86,151.20 at zoom level 6.
-        let camera = GMSCameraPosition.camera(withLatitude: 21.354652, longitude: 39.982282, zoom: 13.2)
-        map.camera = camera
+        let camera = GMSCameraPosition.camera(withLatitude: lat, longitude: long, zoom: zoom)
+        map.animate(to: camera)
         
+    }
+    
+    func loadMap(_ location: CLLocationCoordinate2D, _ zoom: Float = 13.2) {
+        // Create a GMSCameraPosition that tells the map to display the
+        // coordinate -33.86,151.20 at zoom level 6.
+        let camera = GMSCameraPosition.camera(withLatitude: location.latitude, longitude: location.longitude, zoom: zoom)
+        map.animate(to: camera)
+        
+    }
+    
+    func updateMap() {
+        map.clear()
         // Creates a marker in the center of the map.
-        for location in locations {
-            createMarker(fromLocation:location)
+        for sector in sectors {
+            let marker = CustomMarker(position: CLLocationCoordinate2D(latitude: sector.lat, longitude: sector.long), radius: sector.radius)
+            marker.fillColor = UIColor.red.withAlphaComponent(0.2)
+            marker.strokeWidth = 0
+            marker.map = map
+            marker.isTappable = true
+            marker.volunteers = sector.volunteers
+        }
+    }
+    
+    func fillVolunteersMarkers() {
+        for i in 20..<29 {
+//            let sector = volunteers[i]
+            let marker = GMSMarker(position: CLLocationCoordinate2D(latitude: 21.354652 + Double(i), longitude: 39.982282 + Double(i)))
+            marker.icon = #imageLiteral(resourceName: "map")
+            marker.map = map
+            marker.isTappable = false
         }
     }
     
@@ -140,14 +196,11 @@ class DashboardViewController: DemoBaseViewController {
     }
     
     func startSpruce() {
-        firstStackView.spruce.animate(animations, animationType: SpringAnimation(duration: 1.4), sortFunction: sortFunction)
-    }
-    
-    func createMarker(fromLocation location:Location) {
-        let marker = CustomMarker()
-        marker.position = CLLocationCoordinate2D(latitude: location.latitude!, longitude: location.longitude!)
-        marker.icon = location.profilePic?.withAlphaComponent(0.2)
-        marker.map = map
+        firstStackView.spruce.animate(animations, animationType: SpringAnimation(duration: 1.4), sortFunction: sortFunction) { bool in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.map.alpha = 1
+            })
+        }
     }
     
     override func updateChartData() {
@@ -234,12 +287,17 @@ class DashboardViewController: DemoBaseViewController {
     }
     
     func updateSectorInfo(_ volunteers: [Volunteer]) {
-        medicsLabel.text = String(volunteers.filter({$0.category == "1"}).count)
-        giudanceLabel.text = String(volunteers.filter({$0.category == "2"}).count)
-        translationLabel.text = String(volunteers.filter({$0.category == "3"}).count)
         
-        if let bool = medicsLabel.superview?.superview?.superview?.isHidden, bool {
-            medicsLabel.superview?.superview?.superview?.isHidden = false
+        medicsLabel.countFromCurrentValue(to: CGFloat(volunteers.filter({$0.category == "1"}).count), withDuration: 0.3)
+        giudanceLabel.countFromCurrentValue(to: CGFloat(volunteers.filter({$0.category == "2"}).count), withDuration: 0.3)
+        translationLabel.countFromCurrentValue(to: CGFloat(volunteers.filter({$0.category == "3"}).count), withDuration: 0.3)
+        
+        if let bool = medicsLabel.superview?.superview?.superview?.superview?.isHidden, bool {
+            UIView.animate(withDuration: 0.7) {
+                self.backViews.forEach({$0.isHidden = false})
+                self.medicsLabel.superview?.superview?.superview?.superview?.isHidden = false
+            }
+            scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height), animated: true)
         }
     }
     
@@ -248,9 +306,31 @@ class DashboardViewController: DemoBaseViewController {
             if let iconView = (sender as? GMSMarker)?.iconView {
                 segue.destination.popoverPresentationController?.sourceRect = iconView.bounds
             }
+        } else if segue.identifier == "dropDownSegue", let vc = segue.destination as? DropDownTableViewController {
+            vc.delegate = self
+            vc.popoverPresentationController?.sourceRect = menuButton.bounds
         }
     }
 
+}
+
+extension DashboardViewController: DropDownDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var location: CLLocationCoordinate2D!
+        var zoom: Float!
+        switch indexPath.row {
+        case 0:
+            location = coordinates[.Arafat]
+            zoom = 13.2
+        case 1:
+            location = coordinates[.Muna]
+            zoom = 13.2
+        default:
+            location = coordinates[.Muzdalifah]
+            zoom = 13.2
+        }
+        loadMap(location, zoom)
+    }
 }
 
 
@@ -262,6 +342,7 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuTableViewCell") as! SideMenuTableViewCell
         
         cell.title.text = sideMenu[indexPath.row]
+        cell.icon.image = icons[indexPath.row]
         
         return cell
     }
@@ -272,10 +353,9 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
 
 
 extension DashboardViewController: GMSMapViewDelegate {
-    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        updateSectorInfo((marker as! CustomMarker).volunteers)
-        
-        return true
+    func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {
+        updateSectorInfo((overlay as! CustomMarker).volunteers)
+        scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentSize.height - scrollView.bounds.size.height), animated: true)
     }
 }
 

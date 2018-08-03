@@ -16,5 +16,7 @@ target 'NathemAdminPanel' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'Spruce'
+  pod 'Spring'
+  pod 'UICountingLabel'
 
 end

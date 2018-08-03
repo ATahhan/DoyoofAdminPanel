@@ -14,6 +14,7 @@ class SideMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var sideView: UIView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var arrow: UILabel!
+    @IBOutlet weak var icon: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,8 +26,9 @@ class SideMenuTableViewCell: UITableViewCell {
 
         sideView.isHidden = !selected
         backAlphaView.isHidden = !selected
-        title.textColor = selected ? .black : .lightGray
-        arrow.textColor = selected ? .black : .lightGray
+        title.textColor = selected ? .white : UIColor(rgb: 0xB9C0BA)
+        arrow.textColor = selected ? .white : UIColor(rgb: 0xB9C0BA)
+        arrow.isHidden = !selected
     }
 
 }

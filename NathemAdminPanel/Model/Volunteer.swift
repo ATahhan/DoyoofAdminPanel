@@ -10,8 +10,8 @@ import Foundation
 
 struct Volunteer {
     var id: String
-    var lat: String
-    var long: String
+    var lat: Double
+    var long: Double
     var status: String
     var name: String
     var natId: String

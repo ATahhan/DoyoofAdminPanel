@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "40422A0B043028538DDD955FFAE89B9C"
+               BlueprintIdentifier = "6634AAE40EC9BD59AE0546DD1E436DF2"
                BuildableName = "Pods_NathemAdminPanel.framework"
                BlueprintName = "Pods-NathemAdminPanel"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "40422A0B043028538DDD955FFAE89B9C"
+            BlueprintIdentifier = "6634AAE40EC9BD59AE0546DD1E436DF2"
             BuildableName = "Pods_NathemAdminPanel.framework"
             BlueprintName = "Pods-NathemAdminPanel"
             ReferencedContainer = "container:Pods.xcodeproj">

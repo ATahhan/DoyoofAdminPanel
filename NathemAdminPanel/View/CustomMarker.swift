@@ -10,8 +10,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class CustomMarker:GMSMarker
-{
+class CustomMarker: GMSCircle {
     static var count = 0
     var markerIndex:Int!
     var type = 0
